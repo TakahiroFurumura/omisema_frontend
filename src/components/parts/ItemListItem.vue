@@ -15,7 +15,7 @@
         <!--Review Rating-->
         <div class="d-flex">
           <ReviewStars
-              :rating=1.5
+              :rating=this.rating
               :review_count=this.review_count
           />
         </div>
