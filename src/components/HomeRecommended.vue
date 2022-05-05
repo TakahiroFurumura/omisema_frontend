@@ -16,6 +16,7 @@
         >
           <ItemListItem v-for="item in items" v-bind="item" v-bind:key="item.item_key"
                         :box_width="item_card_width - 10"
+                        :show_link_bottun="true"
           />
         </v-card>
       </v-col>

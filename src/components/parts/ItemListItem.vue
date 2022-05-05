@@ -26,6 +26,7 @@
         <span class="text-14 primary--text mb-0">10% off</span>
       </div>
       <v-btn
+          v-if="show_link_bottun"
           color="primary"
           outlined
           size="small"
@@ -76,7 +77,8 @@ export default {
     rating: Number,
     review_count: Number,
 
-    box_width: Number
+    box_width: Number,
+    show_link_bottun: Boolean,
   },
   data() {
     return{
