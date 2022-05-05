@@ -47,7 +47,7 @@ export default class ItemInfo {
     this.item_img_source_url = "";
     this.ref_price = 100;
 
-      this.rating = 3.5;
-      this.review_count = 10;
+    this.rating = 3;
+    this.review_count = 59;
     }
 }

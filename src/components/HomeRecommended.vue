@@ -25,7 +25,7 @@
 </template>
 
 <script>
-// import ItemInfo from '@/lib/class_item_info.ts'
+import ItemInfo from '@/lib/class_item_info.ts'
 import ItemListItem from '@/components/parts/ItemListItem.vue'
 import {onMounted} from "vue";
 import {breakPoint} from "@/lib/break_points";
@@ -45,33 +45,7 @@ export default {
   data() {
     return{
       items:[
-        {
-        item_key: 'item_key',
-        item_name: '123456789012345678901234567890123456789012345678901234567890',
-
-        item_description: '1234567890123456789012345678901234567890',
-        item_description_source_url: ' ',  // 商品説明の取得元
-
-        manufacturer_brand: 'メーカー',
-        manufacturer_brand_url: '',
-
-        item_img_path: 'https://omisema.com/assets/images/no_item_img.svg',  // 画像パス
-        item_img_source_url: '',  // 画像取得元のURL
-
-        category: 'カテゴリー',
-        net_volume: null,
-        net_volume_unit: '',
-        net_weight: null,
-        net_weight_unit: '',
-        quantity: 1,
-        ref_price: null,
-
-        search_result_score: 0,
-        hit_keyword_count: 0,
-
-        rating: 3.5,
-        review_count: 100,
-        },
+          new ItemInfo('test')
       ]
     }
   },
