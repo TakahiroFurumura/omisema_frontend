@@ -1,59 +1,65 @@
 <template>
-  <div class="d-flex" >
-    <v-img
-        class="align-self-start"
-        :src="require('@/assets/images/4.png')"
-        :width=img_width
-        alt=""
-    ></v-img>
-    <div class="ms-1 me-0 pa-0 align-self-start">
-      <div class="mb-0 ps-1 pe-1 pe-2" v-bind:style="{width:text_width_str}">
-        <!--Title-->
-        <h5 class="f-600 ma-0 pa-0" style="overflow-wrap: break-word; width:auto">{{ this.item_name }}</h5>
-        <!--Brand and Category-->
-        <v-chip class="text-uppercase" text-color="secondary" size="small" color="grey lighten-4">Must Try</v-chip>
-        <!--Review Rating-->
-        <div class="d-flex">
-          <ReviewStars
-              :rating=this.rating
-              :review_count=this.review_count
-          />
+  <div class="ma-0 pa-0">
+    <div class="d-flex" >
+      <v-img
+        :src="item_img_path"
+        :width=imgWidth
+        :aspect-ratio="1"
+      ></v-img>
+        <div class="ms-1 me-0 pa-0 align-self-start">
+          <div class="mb-0 ps-1 pe-1 pe-2" v-bind:style="{width:'100%'}">
+            <!--Title-->
+            <a :href="link_to_url">
+              <h6 class="ma-0 py-0 pe-1 font-weight-regular"
+                  style="overflow-wrap:break-word;
+                  width:auto;">
+                {{ this.truncatedItemName }}
+              </h6>
+              <!--Price-->
+              <h6 class="text-14 text-secondary">{{priceFromStr}}</h6>
+            </a>
+          <!--Brand and Category-->
+          <v-chip v-if="hasBrand" class="text-uppercase my-1" size="x-small" color="primary">{{this.manufacturer_brand}}</v-chip>
+          <v-chip v-if="hasCategory" class="text-uppercase my-1" size="x-small" color="primary">{{this.category}}</v-chip>
+          <!--Review Rating-->
+          <div class="d-flex my-1">
+            <ReviewStars
+                :review_rating=this.review_rating
+                :review_count=this.review_count
+                size="x-small"
+            />
+          </div>
+        </div>
+        <div v-if="show_link_bottun"
+             class="text-caption text-decoration-underline my-0 py-0 ps-1">
+
+              <a :href="link_to_url">お店をチェック</a>
         </div>
       </div>
-      <div class="d-flex mb-1">
-        <span class="text-14 grey--text text--darken-1 text-decoration-line-through me-2 mb-0">$25</span>
-        <span class="text-14 grey--text text--darken-4 me-2 mb-0">$22.5</span>
-        <span class="text-14 primary--text mb-0">10% off</span>
-      </div>
-      <v-btn
-          v-if="show_link_bottun"
-          color="primary"
-          outlined
-          size="small"
-          class="elevation-1"
-      >
-          お店をチェック
-      </v-btn>
     </div>
+    <a class="d-flex mt-1" style="text-decoration: None" :href="item_img_source_url" target="_blank" rel="noopener">
+      <span class="font-weight-light text-grey ma-0 pa-0"
+            :style="{fontSize:'10px'}">
+        {{imageSourceString}}
+      </span>
+      <v-icon size="10px" color="grey" class="align-self-center">mdi-open-in-new</v-icon>
+    </a>
   </div>
 </template>
 
 <script>
+import store from '@/store'
 // import ItemInfo from '@/lib/class_item_info.ts';
 import ReviewStars from '@/components/parts/ReviewStars.vue';
 import {onMounted} from "vue";
 import {breakPoint} from "@/lib/break_points";
+import {price_from_str} from "@/lib/price_string";
+import {cutString} from "@/lib/cut-string";
 
-const debug=true;
 export default {
   name: "ItemListItem",
   components:{
     ReviewStars
-  },
-  setup() {
-    onMounted(() => {
-      if (debug) console.log('ItemListItem mounted');
-    })
   },
   props:{
     item_key: String,
@@ -61,9 +67,9 @@ export default {
     item_description: String,
     item_description_source_url: String,
 
-    manufacturer_brand: String,
-    manufacturer_brand_url: String,
-    category: String,
+    manufacturer_brand: {type: String, default: ""},
+    manufacturer_brand_url: {type: String, default: ""},
+    category: {type: String, default: ""},
 
     net_volume: Number,
     net_volume_unit: String,
@@ -74,19 +80,19 @@ export default {
     item_img_source_url: String,
     ref_price: Number,
 
-    rating: Number,
+    review_rating: Number,
     review_count: Number,
 
     box_width: Number,
     show_link_bottun: Boolean,
   },
-  data() {
+  data: () => {
     return{
       debug: true,
     }
   },
   computed: {
-    img_width: function() {
+    imgWidth: function() {
       switch (breakPoint()) {
       case 'xs': return 150
       case 'sm': return 150
@@ -95,23 +101,52 @@ export default {
       case 'xl': return 180}
       return 150
     },
-    text_width_str: function() {
-
+    textWidth: function() {
       switch (breakPoint()) {
-      case 'xs': return "200px"
-      case 'sm': return "200px"
-      case 'md': return "240px"
-      case 'lg': return "240px"
-      case 'xl': return "240px"
+      case 'xs': return 200
+      case 'sm': return 200
+      case 'md': return 240
+      case 'lg': return 240
+      case 'xl': return 240
       }
       return 240
+    },
+    textWidthStr: function() {
+      return (this.textWidth.toString() + "px")
+    },
+    hasCategory: function() {
+      return (this.category !== null && this.category.length > 0)
+    },
+    hasBrand: function() {
+      return (this.manufacturer_brand !== null && this.manufacturer_brand.length > 0)
+    },
+    priceFromStr: function() {
+      return price_from_str(this.ref_price)
+    },
+    truncatedItemName: function() {
+      return cutString(this.item_name, this.textWidth * 3 * 0.9, 15)
+    },
+    imageSourceString: function() {
+      return "Image: " + cutString(this.item_img_source_url, this.textWidth*1.2, 15) + "..."
+    },
+    link_to_url: function(){
+      return "/item/" + this.item_key + "/"
     }
   },
   method:{
+  },
+  // 追記
+  beforeRouteUpdate (to, from, next) {
+    // URL の id が変わったときに src/components/items-detail.vue の updateItem 関数を実行してモデルを更新する
+    next();
   }
+
+  /*
+  mounted () {
+  }
+  */
 }
 </script>
 
 <style scoped>
-
 </style>
