@@ -3,13 +3,18 @@
         <v-app-bar
             fixed
             color="white"
-            elevate-on-scroll
+            fade-on-scroll
+            scroll-off-screen
             width="100%"
         >
             <v-container class="d-flex align-center">
                 <router-link to="/">
                   <img :src="require('@/assets/images/logo_icon.svg')" alt="" width="45"/>
                 </router-link>
+                <router-link to="/">
+                  <h5 class="font-weight-medium mx-2">Omisema.com</h5>
+                </router-link>
+
                 <v-spacer></v-spacer>
                 <div class="form-location flex-grow-1 d-none d-md-flex border rounded ">
                   <input class="white flex-grow-1  ps-5" type="text" placeholder="商品名やメーカーで検索" />
@@ -25,7 +30,6 @@
                 >
                   <template v-slot:activator="{ on, attrs }">
                     <v-btn
-
                       light
                       text
                       v-bind="attrs"

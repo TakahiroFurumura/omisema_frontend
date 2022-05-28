@@ -113,7 +113,7 @@ function cutString(str, cut_length_px, font_px) {
         }
         // 指定の長さを超えたら、ちょん切って返す
         if (str_length > cut_length_px) {
-            return str.slice(0, i)
+            return (str.slice(0, i) + "..")
         }
     }
     return str

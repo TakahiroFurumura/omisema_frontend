@@ -17,7 +17,9 @@
               <v-list-item>
                 <v-icon class="mr-1 v-icon--size-large" stype="">mdi-alpha-o-circle-outline</v-icon>
                 <v-list-item-content>
-                  <v-list-item-title class="font-weight-midium">Omisema.comについて</v-list-item-title>
+                  <router-link to="/about">
+                   <v-list-item-title class="font-weight-midium">Omisema.comについて</v-list-item-title>
+                  </router-link>
                 </v-list-item-content>
               </v-list-item>
             </v-card>

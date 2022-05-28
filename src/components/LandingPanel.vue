@@ -10,15 +10,20 @@
               商品とお店を検索
             </h1>
             <h6 class="text-white text-center font-weight-light mb-5">
-              Amazon・楽天・ヨドバシなど50以上のお店で、価格や在庫を比較します
+              10,000件以上のお店をチェック、価格や在庫を比較します
             </h6>
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="12" md="12" lg="7" class="mx-auto mb-15">
             <div class="d-flex white flex-wrap">
-              <input class="bg-white flex-1 rounded rounded-r-0 ps-5" type="text" placeholder="商品名やメーカーで検索" />
-              <v-btn to="/resturant/ResturantTwoColumn" x-large color="primary" class="rounded rounded-l-0 text-capitalize">
+              <input id="keyword-search-box" class="bg-white flex-1 rounded rounded-r-0 ps-5" type="text" placeholder="商品名やメーカーで検索"
+                     @keypress.enter="openSearchResult"
+              />
+              <v-btn @click="openSearchResult"
+                     x-large
+                     color="primary"
+                     class="rounded rounded-l-0 text-capitalize">
                 検索
               </v-btn>
             </div>
@@ -39,6 +44,7 @@ export default {
     dialog: false,
     shoppingCartDrawer: false
   }),
+
   methods: {
     toggleNavClass(){
         if(this.active == false){
@@ -46,9 +52,17 @@ export default {
         } else {
           return 'sticky-nav'
         }
-
+    },
+    openSearchResult() {
+      let e = document.getElementById("keyword-search-box")
+      this.$router.push({name: "SearchResult",
+        params:{search_type:"kbc", keywords:e.value, primary_brand_aliases:"-", category_node_ids:"-"}})
+      return e.value;
     }
   },
+  computed: {
+  },
+
   mounted() {
     window.document.onscroll = () => {
 
