@@ -1,9 +1,11 @@
 <template>
     <div>
         <v-app-bar
-            fixed
+            elevation="0"
+            prominent
+            hide-on-scroll
             color="white"
-            fade-on-scroll
+            absolute
             scroll-off-screen
             width="100%"
         >

@@ -44,7 +44,7 @@ export default defineComponent({
 
   data() {
     return {
-      debug: true,
+      debug: false,
       is_loading: false,
       is_load_failed: false,
       offers: [],

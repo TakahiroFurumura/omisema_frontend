@@ -27,7 +27,7 @@ export default {
 
   data() {
     return{
-      debug: true,
+      debug: false,
       items: [],
       is_loading: false,
       is_load_failed: false

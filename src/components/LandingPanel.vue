@@ -1,16 +1,16 @@
 <template>
   <div class="hero-section" >
-    <Header :class="toggleNavClass()" />
+    <!--<Header :class="toggleNavClass()" />-->
 
     <v-container>
       <div class="mt-15">
         <v-row>
           <v-col cols="12" xl="5" class="mx-auto">
-            <h1 class="text-white text-center display-2 font-weight-regular mt-4 mb-4">
+            <h1 class="text-black text-center display-2 font-weight-regular mt-4 mb-4">
               商品とお店を検索
             </h1>
-            <h6 class="text-white text-center font-weight-light mb-5">
-              10,000件以上のお店をチェック、価格や在庫を比較します
+            <h6 class="text-black text-center font-weight-regular mb-5">
+              100件以上のネット通販をチェック、価格や在庫を比較します
             </h6>
           </v-col>
         </v-row>
@@ -78,8 +78,8 @@ export default {
 <style lang="scss">
 
   .hero-section {
-    background-image: url('../assets/images/header-bg.jpg');
-    background-size: cover;
+    background-image: url('../assets/images/background/plaid.jpg');
+    background-repeat: repeat;
     .nav {
       display: none;
     }

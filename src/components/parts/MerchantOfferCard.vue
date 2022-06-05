@@ -1,6 +1,6 @@
 <template>
   <v-card min-width="350px" max-width="400px"
-          class="px-2 py-1 elevation-5"
+          class="px-2 py-1 elevation-0"
   >
     <!-- merchant name -->
     <v-card-header class="pa-1">
@@ -35,18 +35,26 @@
       </v-list-item>
 
       <!-- Point -->
-      <v-list-item v-if="this.point > 0" class="my-0 py-0 px-1"  max-height="10px">
-        <v-list-item-icon icon="mdi-alpha-p-circle-outline " size="small"/>
-        <v-list-item-content>
-          <v-list-item-title class="text-body-2 ms-1 text-wrap">{{point_str}}</v-list-item-title>
+      <v-list-item v-if="this.point > 0" class="my-0 py-0 px-1" height="12px">
+        <v-list-item-icon class="my-0 py-0" icon="mdi-alpha-p-circle-outline " size="small"/>
+        <v-list-item-content class="my-0 py-0">
+          <v-list-item-title
+              class="my-0 py-0 text-body-2 ms-1 text-wrap"
+              >
+            {{point_str}}
+          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
       <!-- Delivery -->
-      <v-list-item class="my-0 py-0 px-1" max-height="11px">
-        <v-list-item-icon :icon="inventory_icon" size="small"/>
+      <v-list-item class="my-0 py-0 px-1" height="12px">
+        <v-list-item-icon class="my-0 py-0" :icon="inventory_icon" size="small"/>
         <v-list-item-content>
-          <v-list-item-title class="text-caption ms-1 text-wrap">{{ this.delivery_promise }}</v-list-item-title>
+          <v-list-item-title
+              class="my-0 py-0 text-caption ms-1 text-wrap"
+              style="line-height:12px">
+            {{ this.delivery_promise }}
+          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 </v-list>

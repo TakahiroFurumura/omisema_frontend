@@ -1,5 +1,5 @@
 <template>
-  <v-card class="">
+  <v-card class=" elevation-0">
     <v-card-title class="h6 px-2 py-1 d-flex align-center">
       <v-icon size="20px" color="black" class="px-1 align-self-center">mdi-storefront-outline</v-icon>
       <div class="align-self-center px-1">ECサイトでのレビュー</div>

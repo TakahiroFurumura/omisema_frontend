@@ -50,7 +50,7 @@ export default {
 
   data: () => {
     return{
-      debug: true,
+      debug: false,
       tab: "tab",
       item: new ItemInfo({}),
     }
