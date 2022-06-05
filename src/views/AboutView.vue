@@ -1,17 +1,15 @@
 <template>
   <div class="py-0">
-    <v-row>
-
-      <v-col>
-        <v-img
-          :src="require('@/assets/images/about.jpg')"
-        />
+    <v-row class="d-flex">
+      <v-col class="v-col-12 v-col-sm-6">
+        <div id="img-panel" class="d-flex" style="height:300px;">
+          <h3 class="text-center ma-auto">Omisema.comについて</h3>
+        </div>
       </v-col>
 
       <v-col align-self="center">
         <v-row>
           <v-col>
-            <h3>Omisema.comについて</h3>
           </v-col>
         </v-row>
         <v-row>
@@ -60,3 +58,10 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+  #img-panel{
+    background-image: url('../assets/images/background/jade.jpg');
+    background-repeat: repeat;
+  }
+</style>
