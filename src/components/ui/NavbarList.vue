@@ -14,6 +14,7 @@
               max-width="300"
               style="cursor: pointer"
             >
+
               <v-list-item>
                 <v-icon class="mr-1 v-icon--size-large" stype="">mdi-alpha-o-circle-outline</v-icon>
                 <v-list-item-content>
@@ -22,6 +23,17 @@
                   </router-link>
                 </v-list-item-content>
               </v-list-item>
+
+              <v-list-item>
+                <v-icon class="mr-1 v-icon--size-large" stype="">mdi-alpha-p-circle-outline</v-icon>
+                <v-list-item-content>
+                  <router-link to="/privacy_policy">
+                   <v-list-item-title class="font-weight-midium">Privacy Policy</v-list-item-title>
+                  </router-link>
+                </v-list-item-content>
+              </v-list-item>
+
+
             </v-card>
         </v-list-item-group>
       </v-list>

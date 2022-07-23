@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import SearchView from '@/views/SearchView.vue'
-import ItemOfferView from '@/views/ItemView.vue'
+import ItemOfferView from '@/views/ItemView.vue';
+import PrivacyPolicy from "@/views/PrivacyPolicy.vue";
 import ItemView from "@/views/ItemView.vue";
 import AboutView from "@/views/AboutView.vue";
 
@@ -29,6 +30,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/about',
     name: 'AboutView',
     component: AboutView
+  },
+  // Privacy Policy
+  {
+    path: '/privacy_policy',
+    name: 'PrivacyPolicy',
+    component: PrivacyPolicy
   }
 ]
 
