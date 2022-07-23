@@ -49,9 +49,9 @@ export default {
         return ((Math.floor(this.review_count / 100) * 100).toString() + '+')
       }
       if (this.review_count < 10000) {
-        return ((Math.floor(this.review_count / 1000)).toString() + 'k+')
+        return ((Math.floor(this.review_count / 1000)).toString() + '000+')
       }
-      return ((Math.floor(this.review_count / 10000)).toString() + '0k+')
+      return ((Math.floor(this.review_count / 10000)).toString() + '万以上')
     }
   },
   method:{

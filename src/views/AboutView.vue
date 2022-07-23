@@ -7,7 +7,7 @@
         </div>
       </v-col>
 
-      <v-col align-self="center">
+      <v-col class="mx-3" align-self="center">
         <v-row>
           <v-col>
           </v-col>

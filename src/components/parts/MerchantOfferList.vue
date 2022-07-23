@@ -79,6 +79,7 @@ export default defineComponent({
               this.is_loading = false;
             }
 
+            this.sort_offers();
             this.is_loading = true;
             this.is_loading = false;
 
